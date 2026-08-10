@@ -274,7 +274,7 @@ def create_image_with_extent(extent, spacing=(1, 1, 1), margin=0):
     extent = (
         np.asarray(extent[0], dtype=float),
         np.asarray(extent[1], dtype=float),
-    )  # voxelize.compute_voxelized_geometry requires tuple of
+    )  # voxelize.compute_voxelized_geometry requires tuple of np arrays, not tuples (clashes with voxelize.compute_voxelized_geometry assertion)
     spacing = np.array(spacing).astype(float)
     size = np.ceil((extent[1] - extent[0]) / spacing).astype(int) + 2 * margin
 
