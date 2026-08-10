@@ -271,6 +271,10 @@ def align_image_with_physical_volume(
 
 def create_image_with_extent(extent, spacing=(1, 1, 1), margin=0):
     # define the new size and spacing
+    extent = (
+        np.asarray(extent[0], dtype=float),
+        np.asarray(extent[1], dtype=float),
+    )  # voxelize.compute_voxelized_geometry requires tuple of
     spacing = np.array(spacing).astype(float)
     size = np.ceil((extent[1] - extent[0]) / spacing).astype(int) + 2 * margin
 

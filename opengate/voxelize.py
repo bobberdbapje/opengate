@@ -155,8 +155,11 @@ def compute_voxelized_geometry(sim, extent, spacing, margin):
         image = create_image_with_extent(extent, spacing, margin)
     else:
         fatal(
-            f"The input variable `extent` needs to be a tuple of 3-vectors, or a volume, "
-            f"or a list of volumes. Found: {extent}."
+            f"The input variable `extent` needs to be either: "
+            f"(1) a single volume; (2) a list of volumes or (3) a tuple of two 3-dimensional list/tuple entries"
+            f"representing the diagonally opposite corners of a box, e.g. ((xmin, ymin, zmin), (xmax, ymax, zmax))."
+            f"NumPy arrays are not accepted as corner entries here — convert with tuple(arr) first. "
+            f"Found: {extent}."
         )
 
     vl = sim.verbose_level
